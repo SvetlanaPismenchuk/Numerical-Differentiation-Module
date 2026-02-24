@@ -1,7 +1,7 @@
 '''
 The differentiate file will compose of five different differential
 functions, each accepting the same three parameters with an exception,
-function diff has a fourth parameter "mode"
+function diff has a fourth parameter "mode".
 
 The three parameters are:
 f - function handle
@@ -33,25 +33,7 @@ diff() - lets user choose which function to return
 
 
 
-'''
-All of the four functions have three parameters (f,x0, h = 0.01).
 
-The three parameters are:
-f - function handle
-x0 - center
-h - optional step size h, set at default 0.01
-
-Function diff has an additional parameter mode, which is 
-used to choose which differentiating function the user
-wants to use.
-
-Mode Choices:
-0 - _forward_diff
-1- _backward_diff
-2- _central_diff
-3- _five_point_diff
-
-'''
 def _forward_diff(f, x0, h=0.01):
     return (f(x0 + h) - f(x0)) / h
 
@@ -71,6 +53,26 @@ def _five_point_diff(f, x0, h=0.01):
     ) / (12*h)
 
 def diff(f, x0, h=0.01, mode=0):
+
+'''
+All of the four functions have three parameters (f,x0, h = 0.01).
+
+The three parameters are:
+f - function handle
+x0 - center
+h - optional step size h, set at default 0.01
+
+Function diff has an additional parameter mode, which is 
+used to choose which differentiating function the user
+wants to use.
+
+Mode Choices:
+0 - _forward_diff
+1- _backward_diff
+2- _central_diff
+3- _five_point_diff
+
+'''
 
     if mode == 0:
         return _forward_diff(f, x0, h)

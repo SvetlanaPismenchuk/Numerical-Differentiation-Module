@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from differentiate import diff
 
 def g(x):
-    return (x**2 * ln * x)
+    return (x**2 * np.log(x))
 
 a = 2
 
