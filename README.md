@@ -13,28 +13,17 @@ The module includes four internal helper methods:
 You should not call those helper functions directly. Instead, use the public function diff(), which selects a method using the mode argument:
 - mode = 0: forward difference
 - mode = 1: backward difference
-- mode = 2: central difference (default)
+- mode = 2: central difference
 - mode = 3: five-point central difference
 
 Example usage:
 
 ```python
 import numpy as np
-import differentiate
+from differentiate import diff
 
 def f(x):
     return x**2
+diff(f, x0, h, mode)
 
-x0 = 3.0
-
-# default: central difference
-approx = differentiate.diff(f, x0)
-print(approx)
-
-# forward difference
-approx_fwd = differentiate.diff(f, x0, h=0.01, mode=0)
-print(approx_fwd)
-
-# five-point difference
-approx_five = differentiate.diff(f, x0, h=0.01, mode=3)
-print(approx_five)
+```
