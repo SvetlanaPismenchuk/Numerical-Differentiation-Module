@@ -16,14 +16,45 @@ You should not call those helper functions directly. Instead, use the public fun
 - mode = 2: central difference
 - mode = 3: five-point central difference
 
-Example usage:
+In `experiment.py`, the test function is:
+
+- `g(x) = x^2 ln(x)`
+- center point `a = 2`
+- exact derivative at `a = 2` is stored as `gprime = 2 + 4 ln(2)`
+
+Then the script creates a list of step sizes `hlist` and computes absolute errors for each mode:
 
 ```python
 import numpy as np
+import matplotlib.pyplot as plt
 from differentiate import diff
 
-def f(x):
-    return x**2
-diff(f, x0, h, mode)
+def g(x):
+    return (x**2 * np.log(x))
 
+a = 2
+gprime = 2 + 4 * np.log(2)
+
+hlist = np.linspace(0.005, 0.5, 100)
+
+forward_error = np.abs([diff(g, a, h=h, mode=0) for h in hlist] - gprime)
+backward_error = np.abs([diff(g, a, h=h, mode=2) for h in hlist] - gprime)
+central_error = np.abs([diff(g, a, h=h, mode=1) for h in hlist] - gprime)
+five_point_error = np.abs([diff(g, a, h=h, mode=3) for h in hlist] - gprime)
 ```
+
+What the plots show
+
+The experiment produces two plots:
+
+All methods vs step size
+
+Forward, Backward, Central, and Five-Point error curves are plotted on the same figure.
+
+The x-axis is reversed, so smaller step sizes appear to the right.
+
+Central vs Five-Point
+
+Only Central and Five-Point errors are plotted to compare the two most accurate methods.
+
+These plots show how the numerical derivative accuracy changes depending on both the method (mode) and the chosen step size h.
