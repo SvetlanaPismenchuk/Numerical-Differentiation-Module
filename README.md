@@ -47,14 +47,17 @@ What the plots show
 
 The experiment produces two plots:
 
-All methods vs step size
+# All methods vs step size
 
 Forward, Backward, Central, and Five-Point error curves are plotted on the same figure.
 
 The x-axis is reversed, so smaller step sizes appear to the right.
 
-Central vs Five-Point
+# Central vs Five-Point
 
 Only Central and Five-Point errors are plotted to compare the two most accurate methods.
 
 These plots show how the numerical derivative accuracy changes depending on both the method (mode) and the chosen step size h.
+
+# Acknowledgements
+I'd like to acknowledge Dr.Rumpf for his guidance that led me to complete this assignment, and ChatGPT for correcting syntax issues, code, and deepening my understanding of the code.
